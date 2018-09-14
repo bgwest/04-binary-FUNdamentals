@@ -2,9 +2,9 @@
 
 // const BitMapData = module.exports = {};
 
-export default class BitMapData {
+class BitMapData {
   constructor(buffer, mapDataObj) {
-    this.parsedBitmap = {};
+    // this.parsedBitmap = {};
     this.FILE_SIZE_OFFSET = 2;
     this.HEIGHT_OFFSET = 22;
     this.COLOR_TABLE_OFFSET = 54;
@@ -27,6 +27,8 @@ export default class BitMapData {
     return this.mapDataObj;
   }
 }
+
+module.exports = BitMapData;
 
 // export default class { BitMapData };
 

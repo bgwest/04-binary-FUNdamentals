@@ -1,8 +1,9 @@
 'use strict';
 
-import BitMapData from './lib/parse-bitmap';
-
+// import BitMapData from './lib/parse-bitmap';
 const fs = require('fs');
+const BitMapData = require('./lib/parse-bitmap');
+
 // const parseBitmap = require('./lib/parse-bitmap');
 
 // set / assign -- input variables
@@ -17,7 +18,8 @@ fs.readFile(fileName, (err, data) => {
   console.log('were inside the readFile function.');
   if (err) throw err;
   // console.log(data);
-  const parsedBitmap = BitMapData.mapData(data, {});
+  const parsedBitmap = new BitMapData(data, {});
+  console.log(parsedBitmap.mapData(data));
   // console.log(parsedBitmap);
 });
 
