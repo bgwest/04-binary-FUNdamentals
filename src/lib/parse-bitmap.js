@@ -1,11 +1,7 @@
 'use strict';
 
-// const BitMapData = module.exports = {};
-const fs = require('fs');
-
 class BitMapData {
   constructor(buffer, mapDataObj) {
-    // this.parsedBitmap = {};
     this.FILE_SIZE_OFFSET = 2;
     this.HEIGHT_OFFSET = 22;
     this.COLOR_TABLE_OFFSET = 54;
@@ -24,9 +20,6 @@ class BitMapData {
     this.mapDataObj.height = this.buffer.readInt32LE(this.HEIGHT_OFFSET);
     this.mapDataObj.colorTable = this.buffer.slice(this.COLOR_TABLE_OFFSET, this.COLOR_TABLE_SIZE);
     console.log('buffer object inside of parse-bitmap');
-    fs.writeFile('./test.bmp', this.mapDataObj, (error) => {
-      if (error) throw error;
-    });
     // console.log(parsedBitmap.colorTable);
     return this.mapDataObj;
   }

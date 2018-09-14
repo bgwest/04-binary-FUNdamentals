@@ -10,21 +10,27 @@ const BitMapData = require('./lib/parse-bitmap');
 const fileName = process.argv[2];
 const outputName = process.argv[3];
 const transformationType = process.argv[4];
+
+// const fileName = './assets/house.bmp';
+// const outputName = './test.bmp';
+// const transformationType = 'rotate90';
+
+
 console.log(`param1 = ${fileName}`);
 console.log(`param2 = ${outputName}`);
 console.log(`param3 = ${transformationType}`);
 
 fs.readFile(fileName, (err, data) => {
-  console.log('were inside the readFile function.');
   if (err) throw err;
   // console.log(data);
   const bitMapObject = new BitMapData(data, {});
   const parsedData = bitMapObject.mapData(data);
   console.log(parsedData);
-  // fs.writeFile(outputName, parsedData, (error) => {
-  //  if (error) throw error;
-  // });
-  // console.log(parsedBitmap);
+  fs.writeFile(outputName, data, (error) => {
+    if (error) throw error;
+  });
+  console.log('inside readFile function.');
+  console.log(parsedData);
 });
 
 // const testBuffer = Buffer.from('The Hound');
