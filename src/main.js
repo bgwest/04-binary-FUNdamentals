@@ -1,9 +1,9 @@
 'use strict';
 
-const fs = require('fs');
-const parseBitmap = require('./lib/parse-bitmap');
+import BitMapData from './lib/parse-bitmap';
 
-console.dir(parseBitmap);
+const fs = require('fs');
+// const parseBitmap = require('./lib/parse-bitmap');
 
 // set / assign -- input variables
 const fileName = process.argv[2];
@@ -16,8 +16,8 @@ console.log(`param3 = ${transformationType}`);
 fs.readFile(fileName, (err, data) => {
   console.log('were inside the readFile function.');
   if (err) throw err;
-  console.log(data);
-  const parsedBitmap = parseBitmap.parse(data);
+  // console.log(data);
+  const parsedBitmap = BitMapData.mapData(data, {});
   // console.log(parsedBitmap);
 });
 
