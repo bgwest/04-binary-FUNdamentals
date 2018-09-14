@@ -1,0 +1,30 @@
+{
+  "name": "04-binary-fundamentals",
+  "version": "1.0.0",
+  "description": "read a bitmap in from disk, run one or more color or raster transforms and then write it out to a new file.",
+  "main": "./src/lib/main.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.22.0",
+    "jest": "^23.6.0"
+  },
+  "scripts": {
+    "test": "eslint . && jest --coverage",
+    "justJest": "jest",
+    "justLint": "eslint ./src/lib/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bgwest/04-binary-FUNdamentals.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bgwest/04-binary-FUNdamentals/issues"
+  },
+  "homepage": "https://github.com/bgwest/04-binary-FUNdamentals#readme"
+}
