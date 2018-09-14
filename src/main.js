@@ -18,8 +18,12 @@ fs.readFile(fileName, (err, data) => {
   console.log('were inside the readFile function.');
   if (err) throw err;
   // console.log(data);
-  const parsedBitmap = new BitMapData(data, {});
-  console.log(parsedBitmap.mapData(data));
+  const bitMapObject = new BitMapData(data, {});
+  const parsedData = bitMapObject.mapData(data);
+  console.log(parsedData);
+  // fs.writeFile(outputName, parsedData, (error) => {
+  //  if (error) throw error;
+  // });
   // console.log(parsedBitmap);
 });
 
