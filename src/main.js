@@ -3,6 +3,9 @@
 const fs = require('fs');
 const parseBitmap = require('./lib/parse-bitmap');
 
+const fileName = process.argv[2];
+console.log(`param1 = ${fileName}`);
+
 // const testBuffer = Buffer.from('The Hound');
 //------------------------------------------------------------------------------------------------
 // //! Vinicio - this would print a hex representation of the buffer
@@ -56,11 +59,15 @@ const parseBitmap = require('./lib/parse-bitmap');
 //   // console.log(buffer.toString());
 // });
 
-
-fs.readFile(`${__dirname}/assets/house.bmp`, (error, buffer) => {
+fs.readFile(fileName, (error, buffer) => {
+  console.log('were inside the readFile function.');
   if (error) {
+    console.log(error);
     throw error;
   }
   const parsedBitmap = parseBitmap.parse(buffer);
-  filReader.write();
+  console.log('buffer object inside of readFile');
+  console.log(parsedBitmap);
+  // fileReader.write();
+  console.log('location of fileReader.write()');
 });
