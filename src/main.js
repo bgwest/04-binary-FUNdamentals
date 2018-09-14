@@ -3,8 +3,13 @@
 const fs = require('fs');
 const parseBitmap = require('./lib/parse-bitmap');
 
+// set / assign -- input variables
 const fileName = process.argv[2];
+const outputName = process.argv[3];
+const transformationType = process.argv[4];
 console.log(`param1 = ${fileName}`);
+console.log(`param2 = ${outputName}`);
+console.log(`param3 = ${transformationType}`);
 
 // const testBuffer = Buffer.from('The Hound');
 //------------------------------------------------------------------------------------------------
