@@ -3,6 +3,8 @@
 const fs = require('fs');
 const parseBitmap = require('./lib/parse-bitmap');
 
+console.dir(parseBitmap);
+
 // set / assign -- input variables
 const fileName = process.argv[2];
 const outputName = process.argv[3];
@@ -10,6 +12,14 @@ const transformationType = process.argv[4];
 console.log(`param1 = ${fileName}`);
 console.log(`param2 = ${outputName}`);
 console.log(`param3 = ${transformationType}`);
+
+fs.readFile(fileName, (err, data) => {
+  console.log('were inside the readFile function.');
+  if (err) throw err;
+  console.log(data);
+  const parsedBitmap = parseBitmap.parse(data);
+  // console.log(parsedBitmap);
+});
 
 // const testBuffer = Buffer.from('The Hound');
 //------------------------------------------------------------------------------------------------
@@ -63,16 +73,3 @@ console.log(`param3 = ${transformationType}`);
 //   // }
 //   // console.log(buffer.toString());
 // });
-
-fs.readFile(fileName, (error, buffer) => {
-  console.log('were inside the readFile function.');
-  if (error) {
-    console.log(error);
-    throw error;
-  }
-  const parsedBitmap = parseBitmap.parse(buffer);
-  console.log('buffer object inside of readFile');
-  console.log(parsedBitmap);
-  // fileReader.write();
-  console.log('location of fileReader.write()');
-});
