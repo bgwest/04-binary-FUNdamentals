@@ -28,10 +28,6 @@ fs.readFile(fileName, (err, data) => {
   fs.writeFile(outputName, data, (error) => {
     if (error) throw error;
   });
-  // let ctDataConverted;
-  // for (let index = 0; index <= 255; index++) {
-  //   ctDataConverted += ` ${parsedData.colorTable.readInt32LE(2)}`;
-  // }
   fs.writeFile('test.txt', Object.values(parsedData.colorTable), (error) => {
     if (error) throw error;
   });
