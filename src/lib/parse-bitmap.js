@@ -14,9 +14,11 @@ parseBitmap.parse = (buffer, transformation, callback) => {
       this.fileSizeInBytes = mapDataObj.readInt32LE(FILE_SIZE_OFFSET);
       this.pixelArray = mapDataObj.slice(this.offset, this.fileSizeInBytes);
       this.bitmapHeader = mapDataObj.readInt32LE(14);
+      // console.log(`this.bitmapHeader = ${this.bitmapHeader}`);
       this.height = mapDataObj.slice(HEIGHT_OFFSET).readInt16LE(0);
       this.colorTableOffset = mapDataObj.slice(COLOR_TABLE_OFFSET);
       this.offset = mapDataObj.readInt32LE(10);
+      // console.log(`this.offset = ${this.offset}`);
       this.buffer = mapDataObj;
       this.colorTableBuffer = mapDataObj.slice(this.bitmapHeader + 14, this.offset);
       this.method = transformation;
@@ -33,18 +35,6 @@ parseBitmap.parse = (buffer, transformation, callback) => {
     //     this.modifiedData = modifiedData;
     //   }
 
-    //   get getMapData() {
-    //     return this.mapData;
-    //   }
-
-    //   mapData() {
-    //     console.log('buffer mapDataObject inside of parse-bitmap');
-    //     this.mapDatamapDataObj.type = this.buffer.toString('utf-8', 0, 2);
-    //     this.mapDatamapDataObj.fileSizeInBytes = this.buffer.readInt32LE(this.FILE_SIZE_OFFSET);
-    //     this.mapDatamapDataObj.height = this.buffer.readInt32LE(this.HEIGHT_OFFSET);
-    //     this.mapDatamapDataObj.colorTable = this.buffer.slice(this.COLOR_TABLE_OFFSET, this.COLOR_TABLE_SIZE); //eslint-disable-line
-    //     return this.mapDatamapDataObj;
-    //   }
     invert() {
       console.log(this.pixelArray, 'this is pixel array');
       this.pixelArray.reverse();
