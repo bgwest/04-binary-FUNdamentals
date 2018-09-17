@@ -25,12 +25,12 @@ fs.readFile(fileName, (err, data) => {
   // console.log(data);
   const bitMapObject = new BitMapData(data, {});
   const parsedData = bitMapObject.mapData(data);
-  console.log(parsedData);
+  // console.log(parsedData);
   fs.writeFile(outputName, data, (error) => {
     if (error) throw error;
   });
-  console.log('inside readFile function.');
-  console.log(parsedData);
+  // console.log('inside readFile function.');
+  // console.log(parsedData);
 });
 
 // const testBuffer = Buffer.from('The Hound');
