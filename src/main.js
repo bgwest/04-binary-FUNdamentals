@@ -15,22 +15,24 @@ const transformationType = process.argv[4];
 // const outputName = './test.bmp';
 // const transformationType = 'rotate90';
 
-
 console.log(`param1 = ${fileName}`);
 console.log(`param2 = ${outputName}`);
 console.log(`param3 = ${transformationType}`);
 
 fs.readFile(fileName, (err, data) => {
   if (err) throw err;
-  // console.log(data);
+  console.log(data);
   const bitMapObject = new BitMapData(data, {});
   const parsedData = bitMapObject.mapData(data);
   // console.log(parsedData);
   fs.writeFile(outputName, data, (error) => {
     if (error) throw error;
   });
-  // console.log('inside readFile function.');
-  // console.log(parsedData);
+  fs.writeFile('test.txt', Object.values(parsedData.colorTable), (error) => {
+    if (error) throw error;
+  });
+  console.log('inside readFile function.');
+  console.log(parsedData);
 });
 
 // const testBuffer = Buffer.from('The Hound');
