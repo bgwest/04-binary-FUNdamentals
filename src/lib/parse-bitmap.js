@@ -5,7 +5,7 @@ class BitMapData {
     this.FILE_SIZE_OFFSET = 2;
     this.HEIGHT_OFFSET = 22;
     this.COLOR_TABLE_OFFSET = 54;
-    this.COLOR_TABLE_SIZE = 54 + 256;
+    this.COLOR_TABLE_SIZE = 1024; // 54 + 256
     this.buffer = buffer;
     this.mapDataObj = mapDataObj;
     this.modifiedData = modifiedData;

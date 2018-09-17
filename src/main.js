@@ -4,39 +4,101 @@
 const fs = require('fs');
 const BitMapData = require('./lib/parse-bitmap');
 
-// const parseBitmap = require('./lib/parse-bitmap');
+function endProgram(reason) {
+  // use exit code for jest test
+  if (reason === 'lackingInput') {
+    process.exit(70);
+  }
+
+  if (reason === 'cleanComplete') {
+    process.exit(0);
+  }
+
+  if (reason === 'debug') {
+    // can be used for debugging up to a certain point
+    process.exit(1);
+  }
+}
 
 // set / assign -- input variables
-const fileName = process.argv[2];
-const outputName = process.argv[3];
-const transformationType = process.argv[4];
+const fileName = process.argv[2] ? process.argv[2] : false;
+const outputName = process.argv[3] ? process.argv[3] : false;
+// if either fileName or outputName is blank then return null and stop program
+if (fileName === false || outputName === false) {
+  console.log('\nStopping program execution. Must pass fileName and outputName.\n');
+  console.log('syntax:\n');
+  console.log('< > = required');
+  console.log('[ ] = optional');
+  console.log('* if no transformation is given, program defaults to cloning the image\n');
+  console.log('node main.js < fileName > < outputName > [ transformation ]\n');
+  console.log('example run:\n');
+  console.log('node main.js src/main.js ./src/assets/house.bmp ./test.bmp blackAndWhite\n');
+  endProgram('lackingInput');
+}
 
-// const fileName = './assets/house.bmp';
-// const outputName = './test.bmp';
-// const transformationType = 'rotate90';
+// if blank assumed that you just want the image copied and no transformation will happen
+const transformationType = (process.argv[4]) ? process.argv[4] : false;
 
-console.log(`param1 = ${fileName}`);
-console.log(`param2 = ${outputName}`);
-console.log(`param3 = ${transformationType}`);
+// used to convert shorthand to longhand, otherwise longhand will be attempted (see recordShortHand)
+const transformation = {
+  bw: 'blackAndWhite',
+  r90: 'rotate90',
+  // etc... add more shorthand here as needed
+};
 
+function warnNoTransformationGiven() {
+  console.log(`\nNo transformation parameter given. ${fileName} was simply copied to: ${outputName}\n`);
+}
+
+if (transformationType === false) {
+  warnNoTransformationGiven();
+}
+
+// begin read, clone BitMapData, and run any passed transformation
+//   ** note: can be setup to perform multiple transformation as a stretch goal,
+//     ** but currently only performs 1 if given, per run...
 fs.readFile(fileName, (err, buffer) => {
   if (err) throw err;
-  console.log(buffer);
   const bitMapObject = new BitMapData(buffer, {}, buffer);
   const parsedData = bitMapObject.mapData(buffer);
-  console.log(parsedData);
 
-  // first transform
-  const modifiedData = bitMapObject.blackAndWhite(buffer);
+  // perform given transform
+  const recordShortHand = (transformation[`${transformationType}`]) ? transformation[`${transformationType}`] : false;
+  let modifiedData;
 
-  fs.writeFile(outputName, modifiedData, (error) => {
+  if (recordShortHand) {
+    console.log(recordShortHand);
+    // endProgram('debug');
+    modifiedData = bitMapObject[`${recordShortHand}`](buffer);
+    console.log(modifiedData);
+    fs.writeFile(outputName, modifiedData, (error) => {
+      if (error) throw error;
+    });
+    return modifiedData;
+  }
+
+  if (transformationType) {
+    console.log(transformationType);
+    // if recordShortHand is blank, then try to use given type as is
+    modifiedData = bitMapObject[`${transformationType}`](buffer);
+    fs.writeFile(outputName, modifiedData, (error) => {
+      if (error) throw error;
+    });
+    return modifiedData;
+  }
+
+  // else ...
+  console.log('simply cloning');
+  // or, if shorthand cannot be extracted and transformationType was not given (false),
+  // then just clone the image
+  fs.writeFile(outputName, buffer, (error) => {
     if (error) throw error;
   });
+  //! probably won't be needed in final version, used for debugging atm
   fs.writeFile('test.txt', Object.values(parsedData.colorTable), (error) => {
     if (error) throw error;
   });
-  console.log('inside readFile function.');
-  console.log(parsedData);
+  return buffer;
 });
 
 // const testBuffer = Buffer.from('The Hound');
