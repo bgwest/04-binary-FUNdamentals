@@ -19,13 +19,17 @@ console.log(`param1 = ${fileName}`);
 console.log(`param2 = ${outputName}`);
 console.log(`param3 = ${transformationType}`);
 
-fs.readFile(fileName, (err, data) => {
+fs.readFile(fileName, (err, buffer) => {
   if (err) throw err;
-  console.log(data);
-  const bitMapObject = new BitMapData(data, {});
-  const parsedData = bitMapObject.mapData(data);
+  console.log(buffer);
+  const bitMapObject = new BitMapData(buffer, {}, buffer);
+  const parsedData = bitMapObject.mapData(buffer);
   console.log(parsedData);
-  fs.writeFile(outputName, data, (error) => {
+
+  // first transform
+  const modifiedData = bitMapObject.blackAndWhite(buffer);
+
+  fs.writeFile(outputName, modifiedData, (error) => {
     if (error) throw error;
   });
   fs.writeFile('test.txt', Object.values(parsedData.colorTable), (error) => {
