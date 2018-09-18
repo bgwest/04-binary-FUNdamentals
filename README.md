@@ -35,7 +35,8 @@ THis is achieved by utilizing Node's file system functionality in order to read 
 
   ![Slime picture](./src/assets/slime.bmp)
 ___
-- To test code, simply run the  ```npm run test``` command in your terminal and watch for <span style="color:green">GREEN</span>. Testing is done in this appliction using the Jest testing suite and also Travis CI for continuous integration.
+## Testing
+- To test code, simply run the  ```npm run test``` command in your terminal and watch for GREEN. Testing is done in this appliction using the Jest testing suite and also Travis CI for continuous integration.
 
 ## Architecture
 - JavaScript,
