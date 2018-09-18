@@ -38,7 +38,8 @@ if (fileName === false || outputName === false) {
 // if blank assumed that you just want the image copied and no transformation will happen
 const transformationType = (process.argv[4]) ? process.argv[4] : false;
 
-// used to convert shorthand to longhand, otherwise longhand will be attempted (see recordShortHand)
+// used to convert shorthand to longhand, otherwise
+//   longhand will be attempted (see recordShortHand)
 const transformation = {
   bw: 'blackAndWhite',
   rand: 'randomTransform',

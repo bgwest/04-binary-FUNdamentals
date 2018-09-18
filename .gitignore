@@ -10,6 +10,9 @@ jspm_packages/
 .AppleDouble
 .LSOverride
 
+# Coverage directory used by tools like istanbul
+coverage
+
 # Directories potentially created on remote AFP share
 .AppleDB
 .AppleDesktop

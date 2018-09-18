@@ -13,7 +13,7 @@
   },
   "scripts": {
     "test": "eslint . && jest --coverage",
-    "justJest": "jest",
+    "justJest": "jest  --coverage",
     "justLint": "eslint ./src/lib/*.js"
   },
   "repository": {
