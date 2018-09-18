@@ -10,30 +10,23 @@ parseBitmap.parse = (buffer, transformation, callback) => {
   // Constructor
   class BitMapData {
     constructor(mapDataObj) {
+      // og notes for reference
+      // FILE_SIZE_OFFSET = 2;
+      //  this.HEIGHT_OFFSET = 22;
+      //  this.COLOR_TABLE_OFFSET = 54;
+      //  this.COLOR_TABLE_SIZE = 1024; // 54 + 256
       this.type = mapDataObj.toString('utf-8', 0, 2);
       this.fileSizeInBytes = mapDataObj.readInt32LE(FILE_SIZE_OFFSET);
       this.pixelArray = mapDataObj.slice(this.offset, this.fileSizeInBytes);
       this.bitmapHeader = mapDataObj.readInt32LE(14);
-      // console.log(`this.bitmapHeader = ${this.bitmapHeader}`);
       this.height = mapDataObj.slice(HEIGHT_OFFSET).readInt16LE(0);
       this.colorTableOffset = mapDataObj.slice(COLOR_TABLE_OFFSET);
       this.offset = mapDataObj.readInt32LE(10);
-      // console.log(`this.offset = ${this.offset}`);
       this.buffer = mapDataObj;
       this.colorTableBuffer = mapDataObj.slice(this.bitmapHeader + 14, this.offset);
       this.method = transformation;
       this.callback = callback;
     }
-    // class BitMapData {
-    //   constructor(buffer, mapDatamapDataObj, modifiedData) {
-    //     this.FILE_SIZE_OFFSET = 2;
-    //     this.HEIGHT_OFFSET = 22;
-    //     this.COLOR_TABLE_OFFSET = 54;
-    //     this.COLOR_TABLE_SIZE = 1024; // 54 + 256
-    //     this.buffer = buffer;
-    //     this.mapDatamapDataObj = mapDatamapDataObj;
-    //     this.modifiedData = modifiedData;
-    //   }
 
     invert() {
       console.log(this.pixelArray, 'this is pixel array');
@@ -51,7 +44,21 @@ parseBitmap.parse = (buffer, transformation, callback) => {
     }
 
     blackAndWhite() {
-      // for loop for black and white transformation would go here!
+      console.log('Performing black and white transformation.');
+      for (let i = 0; i < this.colorTableBuffer.length; i++) {
+        if (this.colorTableBuffer[i] >= 100) {
+          this.colorTableBuffer[i] = 255;
+          this.colorTableBuffer[i + 1] = 255;
+          this.colorTableBuffer[i + 2] = 255;
+          i += 3;
+        }
+        if (this.colorTableBuffer[i] < 100) {
+          this.colorTableBuffer[i] = 0;
+          this.colorTableBuffer[i + 1] = 0;
+          this.colorTableBuffer[i + 2] = 0;
+          i += 3;
+        }
+      }
       return this;
     }
 
