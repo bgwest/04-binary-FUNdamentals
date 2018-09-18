@@ -43,6 +43,18 @@ parseBitmap.parse = (buffer, transformation, callback) => {
       return this;
     }
 
+    darken() {
+      for (let i = 0; i < this.colorTableBuffer.length; i++) {
+        if (this.colorTableBuffer[i] >= 125) {
+          this.colorTableBuffer[i] = this.colorTableBuffer[i] - 125;
+        } else {
+          this.colorTableBuffer[i] = 0;
+        }
+      }
+      console.log('Darken Transformation');
+      return this;
+    }
+
     blackAndWhite() {
       console.log('Performing black and white transformation.');
       for (let i = 0; i < this.colorTableBuffer.length; i++) {

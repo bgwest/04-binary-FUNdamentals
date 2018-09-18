@@ -52,6 +52,7 @@ Transformer.run = (param1, param2, param3) => {
     night: 'nightVision',
     nightvision: 'nightVision',
     speck: 'speckles',
+    darken: 'darken',
     // etc... add more shorthand here as needed
   };
 
