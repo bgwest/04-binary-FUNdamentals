@@ -4,6 +4,11 @@
 // for integrating module into other node modules and or testing with jest
 const Transformer = {};
 
+Transformer.compareBuffer = (originalImage, newlyCreatedImage) => {
+  // use this to compare original and new image for jest tests
+
+};
+
 Transformer.run = (param1, param2, param3) => {
   const fs = require('fs');
   const parseBitmap = require('./lib/parse-bitmap');
@@ -52,7 +57,7 @@ Transformer.run = (param1, param2, param3) => {
     night: 'nightVision',
     nightvision: 'nightVision',
     speck: 'speckles',
-    darken: 'darken',
+    dark: 'darken',
     // etc... add more shorthand here as needed
   };
 
