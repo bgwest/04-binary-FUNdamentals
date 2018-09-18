@@ -2,7 +2,7 @@
 ***Authors: Benjamin West, Kristian Esvelt, and Wyatt Pefley*** 
 
 ***Version 1.0.0***
-## Build Status: 
+## Build Status: [![Build Status](https://travis-ci.com/bgwest/04-binary-FUNdamentals.svg?branch=master)](https://travis-ci.com/bgwest/04-binary-FUNdamentals)
 ___
 
 ## Overview
