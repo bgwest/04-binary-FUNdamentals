@@ -6,7 +6,25 @@ const Transformer = {};
 
 Transformer.compareBuffer = (originalImage, newlyCreatedImage) => {
   // use this to compare original and new image for jest tests
+  // WORK TO BE DONE FOR RESUBMIT - Kris
+  const fs = require('fs');
+  let originBuffer;
+  let newBuffer;
 
+  fs.readFile(originalImage, (error, buffer) => {
+    if (error) {
+      throw error;
+    }
+    originBuffer = buffer;
+  });
+
+  fs.readFile(newlyCreatedImage, (error, buffer) => {
+    if (error) {
+      throw error;
+    }
+    newBuffer = buffer;
+  });
+  // if (originalImage.buffer === newlyCreatedImage.buffer) {
 };
 
 Transformer.run = (param1, param2, param3) => {
