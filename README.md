@@ -7,7 +7,7 @@ ___
 
 ## Overview
 This group lab project allows the users to make transformation to a bitmap picture via the CLI.
-THis is achieved by utilizing Node's file system functionality in order to read an existing bitmap file and create an entirely new photo with an added transformation. 
+This is achieved by utilizing Node's file system functionality in order to read an existing bitmap file and create an entirely new photo with an added transformation. 
 - Our application also includes CLI validation to ensure that the required data is input correcly and also includes a shorthand feature in which the user can type shorthand names into the terminal to make transformations, the shorthand for the transformations in our app are:
 1. ```bw```: performs a greyscale transformation,
 2. ```rand```: a random transformation,
