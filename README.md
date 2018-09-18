@@ -1,59 +1,46 @@
-# reader.js - an fs reader module
+# Bitmap Transformer
+***Authors: Benjamin West, Kristian Esvelt, and Wyatt Pefley*** 
+
+***Version 1.0.0***
+## Build Status: 
+___
 
 ## Overview
+This group lab project allows the users to make transformation to a bitmap picture via the CLI.
+THis is achieved by utilizing Node's file system functionality in order to read an existing bitmap file and create an entirely new photo with an added transformation. 
+- Our application also includes CLI validation to ensure that the required data is input correcly and also includes a shorthand feature in which the user can type shorthand names into the terminal to make transformations, the shorthand for the transformations in our app are:
+1. ```bw```: performs a greyscale transformation,
+2. ```rand```: a random transformation,
+3. ```night```: performs the nightVision transformation,
+4. ```nightvision```: also performs the nightVision transformation,
+5. ```speck```: performs the speckles transformation,
+6. ```pink```: performs the pinky transformation,
+7. ```blue```: performs blueScale transform,
+8. ```gold```: performs golden transformation,
+9. ```slime```: performs superSlimey transformation,
+## Getting Started
+- Fork and clone the repository
+- install dependencies using the ```npm i``` command in your terminal,
+- run the following command in your terminal and input the correct data separated by spaces:
 
-- create a reader.js module that exports a single function. 
 
-- The reader module should take an array of three file paths and resolve a mapped array of strings loaded from each file using an error-first callback. 
+  ***Note: <> are not required for commands!**
+- ```node Transformer-cli.js <OriginalPhotoName> <OutputName> <Desired Transformation>```
+### Example: 
+-  ```node Transformer-cli.js house.bmp superSlimey.bmp superSlimey```
+- **This command would transform this image:**
 
-- The string data should be in the same order as the file path data (mapped). If an error occurs, it should immediately reject the error using the callback and stop execution.
+  ![Original picture](./src/assets/house.bmp)
+- **And output this image:**
 
- - The file reader module should have the function signature (paths, callback) => undefined
- 
- - On failure, the file reader module should invoke the callback with an error callback(error)
- 
- - On success, the file reader module should invoke the callback with null as the first parameter and the result as the second parameter - callback(null, result)
+  ![Slime picture](./src/assets/slime.bmp)
+___
+- To test code, simply run the  ```npm run test``` command in your terminal and watch for <span style="color:green">GREEN</span>. Testing is done in this appliction using the Jest testing suite and also Travis CI for continuous integration.
 
-### Prerequisites
-
-Example:
-```
-```
-
-### Tests Performed with Jest
-- The file reader module should have the function signature (paths, callback) => undefined
-- On failure, the file reader module should invoke the callback with an error callback(error)
-- On success, the file reader module should invoke the callback with null as the first parameter and the result as the second parameter - callback(null, result)
-
-### Installing
-
-To use this in your code:
-
-- git clone repo 
-- npm install 
-- require('../src/lib/reader')
-
-## Built With
-
-* nodejs
-* Eslint
-* jest
-
-## Contributing
-
-Please feel free to contribute. Master branch auto merge locked for approval for non-contributors.
-
-## Versioning
-
-*n/a*
-
-## Authors
-
-![CF](http://i.imgur.com/7v5ASc8.png) **Benjamin West** 
-
-## License
-
-*none*
-
-## Travis CI
-[![Build Status](https://travis-ci.com/bgwest/03-async-and-callbacks.svg?branch=master)](https://travis-ci.com/bgwest/03-async-and-callbacks)
+## Architecture
+- JavaScript,
+- Node.js
+- ESLint,
+- Travis CI,
+- Jest,
+- fs

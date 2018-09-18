@@ -46,6 +46,10 @@ const transformation = {
   night: 'nightVision',
   nightvision: 'nightVision',
   speck: 'speckles',
+  pink: 'pinky',
+  blue: 'blueScale',
+  slime: 'superSlimey',
+  gold: 'golden',
   // etc... add more shorthand here as needed
 };
 

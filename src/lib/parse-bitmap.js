@@ -74,6 +74,43 @@ parseBitmap.parse = (buffer, transformation, callback) => {
       return this;
     }
 
+
+    blueScale() {
+      for (let i = 0; i < this.colorTableBuffer.length; i += 4) {
+        this.colorTableBuffer[i + 2] = 0;
+      }
+      console.log('Performing Blue Scale Transform');
+      return this;
+    }
+
+    pinky() {
+      for (let i = 2; i < this.colorTableBuffer.length; i += 2) {
+        this.colorTableBuffer[i + 2] = -2;
+      }
+      console.log('Performing Pinky Transform');
+      return this;
+    }
+
+    superSlimey() {
+      for (let i = 4; i < this.colorTableBuffer.length; i += 2) {
+        this.colorTableBuffer[i + 420] = 42;
+      }
+      console.log('Performing Slimey Transform');
+      return this;
+    }
+
+    golden() {
+      for (let i = -63; i < this.colorTableBuffer.length; i += 4) {
+        this.colorTableBuffer[i / 2] = -430;
+      }
+      for (let j = -13; j < this.colorTableBuffer.length; j += 4) {
+        this.colorTableBuffer[j] = -400 / j;
+        this.colorTableBuffer[j + 15] = -5;
+      }
+      console.log('Performing Golden Transform');
+      return this;
+    }
+
     randomTransform() {
       for (let i = 0; i < this.colorTableBuffer.length; i += 4) {
         this.colorTableBuffer[i] = 25;
@@ -90,6 +127,8 @@ parseBitmap.parse = (buffer, transformation, callback) => {
         this.colorTableBuffer[i] = 1;
         this.colorTableBuffer[i - 1] = 0;
       }
+      console.log('Performing Speckles Transform');
+      return this;
     }
 
     makeTransform() {
