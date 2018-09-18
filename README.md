@@ -1,70 +1,47 @@
-![CF](http://i.imgur.com/7v5ASc8.png) Lab 04: Bitmap Transformer
-===
+# Bitmap Transformer
+***Authors: Benjamin West, Kristian Esvelt, and Wyatt Pefley*** 
 
-## Submission Instructions
-* Work in a fork of this repository
-* Work in a branch on your fork
-* Open a pull request to your master branch
-* Submit on canvas a question and observation, how long you spent, and a link to your pull request
+***Version 1.0.0***
+## Build Status: [![Build Status](https://travis-ci.com/bgwest/04-binary-FUNdamentals.svg?branch=master)](https://travis-ci.com/bgwest/04-binary-FUNdamentals)
+___
 
-## Resources  
-* [Bitmap Specification](https://en.wikipedia.org/wiki/BMP_file_format)
-* [Buffer Docs](https://nodejs.org/api/buffer.html)
+## Overview
+This group lab project allows the users to make transformation to a bitmap picture via the CLI.
+THis is achieved by utilizing Node's file system functionality in order to read an existing bitmap file and create an entirely new photo with an added transformation. 
+- Our application also includes CLI validation to ensure that the required data is input correcly and also includes a shorthand feature in which the user can type shorthand names into the terminal to make transformations, the shorthand for the transformations in our app are:
+1. ```bw```: performs a greyscale transformation,
+2. ```rand```: a random transformation,
+3. ```night```: performs the nightVision transformation,
+4. ```nightvision```: also performs the nightVision transformation,
+5. ```speck```: performs the speckles transformation,
+6. ```pink```: performs the pinky transformation,
+7. ```blue```: performs blueScale transform,
+8. ```gold```: performs golden transformation,
+9. ```slime```: performs superSlimey transformation,
+## Getting Started
+- Fork and clone the repository
+- install dependencies using the ```npm i``` command in your terminal,
+- run the following command in your terminal and input the correct data separated by spaces:
 
-## Configuration 
-Configure the root of your repository with the following files and directories. Thoughfully name and organize any aditional configuration or module files.
-* **README.md** - contains documentation
-* **.gitignore** - contains a [robust](http://gitignore.io) `.gitignore` file 
-* **.eslintrc** - contains the course linter configuratoin
-* **.eslintignore** - contains the course linter ignore configuration
-* **package.json** - contains npm package config
-  * create a `lint` script for running eslint
-  * create a `test` script for running tests
-* **lib/** - contains module definitions
-* **\_\_test\_\_/asset/** - contains bitmaps for testing
-* **\_\_test\_\_/** - contains unit tests
 
-## Feature Tasks
-For this assignment you will be building a bitmap (`.bmp`) transformer CLI. It will read a bitmap in from disk, run one or more color or raster transforms and then write it out to a new file. This project will require the use of node buffers in order to manipulate binary data. Your solution should be composed of small tested modules that solve specific problems. Your modules should be thoughfuly named and well documented. The entry point to your CLI should be an index.js file in the root of your package, and all helper modules should be placed in your lib/ directory. Your bitmap transformer modules should not use any third party librarys.
+  ***Note: <> are not required for commands!**
+- ```node Transformer-cli.js <OriginalPhotoName> <OutputName> <Desired Transformation>```
+### Example: 
+-  ```node Transformer-cli.js house.bmp superSlimey.bmp superSlimey```
+- **This command would transform this image:**
 
-#### Minimum Requirements
-* The CLI should be architected using best modularization practices
-* The CLI should require at least three arguments `input-file-path output-file-path transfrom-name` 
-* The CLI should support a minimum of four transforms (5 if you are part of a team of 4)
-* The CLI should log useful Error messages if used incorrectly
-* The CLI should log a success message on completion
+  ![Original picture](./src/assets/house.bmp)
+- **And output this image:**
 
-## Testing 
-* Use TDD `describe` and `test` methods to define discriptive tests and increase readablity
-* Each `test` callback should aim to test a small well defined feature of a function
-* Write tests to ensure each function behaves correctly with valid and invalud inputs
+  ![Slime picture](./src/assets/slime.bmp)
+___
+## Testing
+- To test code, simply run the  ```npm run test``` command in your terminal and watch for GREEN. Testing is done in this appliction using the Jest testing suite and also Travis CI for continuous integration.
 
-##  Documentation
-In your README.md describe the exported values of each module you have defined. Every function description should include it's airty (expected number of paramiters), the expected data for each paramiter (data-type and limitations), and it's behavior (for both valid and invalued use). Feel free to write any additional information in your README.md.
-
-## Tips
-You will want to define a strategy for solving the problem before you begin to code. Once you have a strategy defined, you can break it into steps that can be split into helper modules. Each helper module should solve a small specific problem. The main module should utilize the helper modules to execute your original stratagy.
-
-###### Example Stragegy 
-0. Gather user input (infile, outfile, and transform)
-0. Read the input bitmap file using the fs module 
-0. Parse the bitmap's buffer into object represeting a bitmap (using a constructor)
-0. Using metadata from the parsed bitmap object run a transform on the buffer directly (mutate the color or raster data)
-0. Write the mutated buffer to the output file path
-
-###### Transfrom Ideas
-* Color Pallet Transforms 
-  * Invert 
-  * Randomize
-  * Black and White
-  * Darken or Lighten
-  * Add or Mutiply a Hue
-  * Add or Subtract Contrast
-  
-* Raster Data Transforms
-  * Pixilate
-  * Add a border
-  * Add a watermark
-  * Vertically or Horizontaly Filp
-  * Verticaly or Horizontaly Mirror
-  * Verticaly or Horizontaly Stretch
+## Architecture
+- JavaScript,
+- Node.js
+- ESLint,
+- Travis CI,
+- Jest,
+- fs
