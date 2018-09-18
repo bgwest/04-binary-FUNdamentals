@@ -44,6 +44,7 @@ const transformation = {
   rand: 'randomTransform',
   night: 'nightVision',
   nightvision: 'nightVision',
+  speck: 'speckles',
   // etc... add more shorthand here as needed
 };
 

@@ -72,7 +72,7 @@ parseBitmap.parse = (buffer, transformation, callback) => {
       return this;
     }
 
-    anotherRandomTransform() {
+    speckles() {
       for (let i = 0; i < this.colorTableBuffer.length; i += 6) {
         this.colorTableBuffer[i] = 6;
         this.colorTableBuffer[i] = 1;
