@@ -21,8 +21,7 @@ THis is achieved by utilizing Node's file system functionality in order to read 
 ## Getting Started
 - Fork and clone the repository
 - install dependencies using the ```npm i``` command in your terminal,
-- run the following command in your terminal and input the correct data separated by spaces:
-
+- run the following command in your terminal and input the correct data separated by spaces to make a transformation:
 
   ***Note: <> are not required for commands!**
 - ```node Transformer-cli.js <OriginalPhotoName> <OutputName> <Desired Transformation>```

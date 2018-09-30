@@ -24,14 +24,14 @@ const fileName = process.argv[2] ? process.argv[2] : false;
 const outputName = process.argv[3] ? process.argv[3] : false;
 // if either fileName or outputName is blank then return null and stop program
 if (fileName === false || outputName === false) {
-  console.log('\nStopping program execution. Must pass fileName and outputName.\n');
-  console.log('syntax:\n');
-  console.log('< > = required');
-  console.log('[ ] = optional');
-  console.log('* if no transformation is given, program defaults to cloning the image\n');
-  console.log('node main.js < fileName > < outputName > [ transformation ]\n');
-  console.log('example run:\n');
-  console.log('node main.js src/main.js ./src/assets/house.bmp ./test.bmp blackAndWhite\n');
+  // console.log('\nStopping program execution. Must pass fileName and outputName.\n');
+  // console.log('syntax:\n');
+  // console.log('< > = required');
+  // console.log('[ ] = optional');
+  // console.log('* if no transformation is given, program defaults to cloning the image\n');
+  // console.log('node main.js < fileName > < outputName > [ transformation ]\n');
+  // console.log('example run:\n');
+  // console.log('node main.js src/main.js ./src/assets/house.bmp ./test.bmp blackAndWhite\n');
   endProgram('lackingInput');
 }
 
@@ -54,7 +54,8 @@ const transformation = {
 };
 
 function warnNoTransformationGiven() {
-  console.log(`\nNo transformation parameter given. ${fileName} was simply copied to: ${outputName}\n`);
+  // console.log(`\nNo transformation parameter given.
+  // ${fileName} was simply copied to: ${outputName}\n`);
 }
 
 if (transformationType === false) {
@@ -69,7 +70,7 @@ if (transformationType === false) {
 const recordShortHand = (transformation[`${transformationType}`]) ? transformation[`${transformationType}`] : false;
 
 if (recordShortHand) {
-  console.log(`recordShortHand: ${recordShortHand}`);
+  // console.log(`recordShortHand: ${recordShortHand}`);
   // endProgram('debug');
   // modifiedData = bitMapObject[`${recordShortHand}`](buffer);
   // console.log(modifiedData);
@@ -91,7 +92,7 @@ if (recordShortHand) {
 }
 
 if (!recordShortHand) {
-  console.log(`transformationType: ${transformationType}`);
+  // console.log(`transformationType: ${transformationType}`);
   // if recordShortHand is blank, then try to use given type as is
   const writeFile = (data, callback) => {
     fs.writeFile(`${__dirname}/assets/${outputName}`, data, (error) => {
